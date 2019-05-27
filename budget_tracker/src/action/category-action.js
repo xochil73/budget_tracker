@@ -9,6 +9,7 @@ export const createCategory = (title, budget) => {
       id: uuid(),
         title,
         budget,
+        expenses: [],
         createdOn: new Date(),
   }
   }
