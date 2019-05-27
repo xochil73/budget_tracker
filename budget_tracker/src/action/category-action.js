@@ -1,24 +1,29 @@
-export const createCategory = (title) => {
+import uuid from 'uuid/v1';
+
+export const createCategory = (title, budget) => {
+  console.log('in create category');
   return {
+
     type: 'CATEGORY_CREATE',
   payload: {
-      id: Math.random(),
+      id: uuid(),
         title,
-        createdOn: new Date
+        budget,
+        createdOn: new Date(),
   }
   }
 };
 
-export const updateCategory = (section) => {
+export const updateCategory = (category) => {
   return {
     type: 'CATEGORY_UPDATE',
-  payload: section,
+  payload: category,
 }
 };
 
-export const destroyCategory = (section) => {
+export const destroyCategory = (category) => {
   return {
     type: 'CATEGORY_DESTROY',
-  payload: section,
+  payload: category,
 }
 };

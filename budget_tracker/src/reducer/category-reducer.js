@@ -1,14 +1,21 @@
 export default ( state=[], {type, payload}) => {
+
   switch(type) {
     case 'CATEGORY_CREATE':
-      return [...state + payload];
+      return [...state, payload];
     case 'CATEGORY_UPDATE':
-      //use map here
-      return null
+      state.map(currentCategory => {
+        if (currentCategory.id === payload.id){
+            currentCategory.title = payload.title;
+            currentCategory.budget = payload.budget;
+        }
+        return null;
+      });
+      return state;
     case 'CATEGORY_DESTROY':
-      //use filter here
-      return null;
-    default:
+      return state.filter(currentCategory => currentCategory.id !== payload.id);
+
+      default:
       return state;
   }
 };
